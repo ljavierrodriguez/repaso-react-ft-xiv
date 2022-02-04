@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "./shared/navbar.jsx";
 import { Footer } from "./shared/footer.jsx";
 import Header from "./header.js";
@@ -17,6 +17,22 @@ const Home = () => {
 		imgUrl: "https://source.unsplash.com/BOBMNKVry0Q/150x150",
 		name: "Katherine Kraushaar",
 		title: "FullStack Developer Junior",
+	};
+
+	const [show, setShow] = useState(false);
+
+	const [name, setName] = useState("Luis Javier");
+
+	const getName = (name) => {
+		switch (name) {
+			case "Luis":
+				setName(name);
+				break;
+
+			default:
+				setName("Anonimous");
+				break;
+		}
 	};
 
 	return (
@@ -52,11 +68,27 @@ const Home = () => {
 			<div
 				className="py-5 bg-image-full"
 				style={{
-					backgroundImage:
-						"url('https://source.unsplash.com/4ulffa6qoKA/1200x800')",
+					backgroundImage: show
+						? "url('https://source.unsplash.com/4ulffa6qoKA/1200x800')"
+						: "url('https://source.unsplash.com/wKZWT6rHjYQ/1200x800')",
 				}}>
 				{/* <!-- Put anything you want here! The spacer below with inline CSS is just for demo purposes!--> */}
 				<div style={{ height: "20rem" }}></div>
+				<button
+					className="btn btn-info"
+					onClick={() => {
+						getName("Luis");
+					}}>
+					Cambiar Fondo
+				</button>
+
+				<button
+					className="btn btn-info"
+					onClick={() => {
+						getName("Pedro");
+					}}>
+					Cambiar Fondo
+				</button>
 			</div>
 			{/* <!-- Content section--> */}
 			<section className="py-5">
